@@ -12,10 +12,9 @@ from transformers.data.data_collator import default_data_collator
 from transformers.pipelines.base import (
     GenericTensor,
     Pipeline,
-    build_pipeline_init_args,
 )
 from transformers.trainer_utils import RemoveColumnsCollator
-from transformers.utils import add_end_docstrings, logging
+from transformers.utils import logging
 
 from .dataset import ForecastDFDataset
 from .time_series_preprocessor import create_timestamps, extend_time_series
@@ -99,9 +98,6 @@ class TimeSeriesPipeline(Pipeline):
         return outputs
 
 
-@add_end_docstrings(
-    build_pipeline_init_args(has_tokenizer=False, has_feature_extractor=True, has_image_processor=False)
-)
 class TimeSeriesForecastingPipeline(TimeSeriesPipeline):
     """Hugging Face Pipeline for Time Series Forecasting
 
